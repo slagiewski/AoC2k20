@@ -11,21 +11,10 @@ namespace AoC2k20.Challenges
         {
             var input = File.ReadAllLines("./input/Day2.txt").ToImmutableList();
 
-            return 
+            return
                 $"Part One: {PartOne(input)}" + Environment.NewLine +
                 $"Part Two: {PartTwo(input)}";
         }
-
-        private static string PartTwo(ImmutableList<string> input) =>
-            input
-                .Select(str =>
-                {
-                    var policyAndPassword = str.Split(": ");
-                    var containsPolicy = ContainsOnePolicy.FromPolicyString(policyAndPassword[0]);
-                    return new Password(containsPolicy, policyAndPassword[1]);
-                })
-                .Count(p => p.IsValid)
-                .ToString();
 
         private static string PartOne(ImmutableList<string> input) =>
             input
@@ -38,20 +27,29 @@ namespace AoC2k20.Challenges
                 .Count(p => p.IsValid)
                 .ToString();
 
+        private static string PartTwo(ImmutableList<string> input) =>
+            input
+                .Select(str =>
+                {
+                    var policyAndPassword = str.Split(": ");
+                    var containsPolicy = ContainsOnePolicy.FromPolicyString(policyAndPassword[0]);
+                    return new Password(containsPolicy, policyAndPassword[1]);
+                })
+                .Count(p => p.IsValid)
+                .ToString();
+    }
 
+    public class Password
+    {
+        public IPolicy Policy { get; }
+        public string PasswordText { get; }
 
-        public class Password
+        public bool IsValid => Policy.Verify(PasswordText);
+
+        public Password(IPolicy policy, string password)
         {
-            public IPolicy Policy { get; }
-            public string PasswordText { get; }
-
-            public bool IsValid => Policy.Verify(PasswordText);
-
-            public Password(IPolicy policy, string password)
-            {
-                Policy = policy;
-                PasswordText = password;
-            }
+            Policy = policy;
+            PasswordText = password;
         }
     }
 
@@ -73,8 +71,8 @@ namespace AoC2k20.Challenges
             var separated = policyStr.Split(" ");
             var positions = separated[0].Split("-");
             return new ContainsOnePolicy(
-                int.Parse(positions[0]), 
-                int.Parse(positions[1]), 
+                int.Parse(positions[0]),
+                int.Parse(positions[1]),
                 separated[1].First());
         }
 

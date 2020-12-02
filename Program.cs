@@ -9,7 +9,8 @@ namespace AoC2k20
         {
             var challenges = new Dictionary<string, Func<string>>()
             {
-                { "Day1", new Challenges.Day1().Evaluate }
+                { "Day1", new Challenges.Day1().Evaluate },
+                { "Day2", new Challenges.Day2().Evaluate }
             };
 
             foreach (var (challengeName, evaluate) in challenges)

@@ -10,11 +10,12 @@ namespace AoC2k20
         {
             var challenges = new Dictionary<string, Func<string>>()
             {
-                { "Day1", new Challenges.Day1().Evaluate },
-                { "Day2", new Challenges.Day2().Evaluate },
-                { "Day3", new Challenges.Day3().Evaluate },
-                { "Day4", new Challenges.Day4().Evaluate },
-                { "Day5", new Challenges.Day5().Evaluate },
+                { "Day 1", new Challenges.Day1().Evaluate },
+                { "Day 2", new Challenges.Day2().Evaluate },
+                { "Day 3", new Challenges.Day3().Evaluate },
+                { "Day 4", new Challenges.Day4().Evaluate },
+                { "Day 5", new Challenges.Day5().Evaluate },
+                { "Day 6", new Challenges.Day6().Evaluate },
             };
 
             foreach (var (challengeName, evaluate) in challenges)

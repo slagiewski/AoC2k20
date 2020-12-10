@@ -18,7 +18,8 @@ namespace AoC2k20
                 { "Day 6", new Challenges.Day6().Evaluate },
                 { "Day 7", new Challenges.Day7().Evaluate },
                 { "Day 8", new Challenges.Day8().Evaluate },
-                { "Day 9", new Challenges.Day9().Evaluate }
+                { "Day 9", new Challenges.Day9().Evaluate },
+                { "Day 10", new Challenges.Day10().Evaluate }
             };
 
             foreach (var (challengeName, evaluate) in challenges)
